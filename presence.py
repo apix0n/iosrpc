@@ -2,9 +2,11 @@ from flask import Flask, request, jsonify
 from pypresence import Presence
 import time
 import threading
-from itunes import get_ios_app_icon
 from dotenv import load_dotenv
 import os
+
+from itunes import get_ios_app_icon
+from more_info import get_custom_info
 
 load_dotenv()
 
@@ -57,7 +59,8 @@ def update_presence():
 
             payload = {
                 "name": app_name or "iOS App",
-                "details": "Playing on iOS",
+                "state": "Playing on iOS",
+                "details": get_custom_info(bundle_id) if bundle_id else None,
                 "large_image": large_image,
                 "large_text": app_name,
                 "small_image": "https://avatars.githubusercontent.com/u/64981298?s=96&v=4",
