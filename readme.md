@@ -27,6 +27,7 @@ A simple Flask server that receives API requests and sets the user's Discord Pre
         - `bundle_id` = Current App (Bundle Identifier) 
          > Will be used to fetch the icon from iTunes servers
         - `use_timer` (boolean) / Optional
+        - `device_name` = Text / Optional
 
 4. Create an Automation set to launch every time you open/close apps of your choice the shortcut you made
 

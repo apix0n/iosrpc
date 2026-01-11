@@ -46,6 +46,7 @@ def update_presence():
     try:
         app_name = data.get("app_name", "").strip()
         bundle_id = data.get("bundle_id", "").strip()
+        device_type = data.get("device_type", "").strip()
 
         # Clear presence if both app_name and bundle_id are empty
         if not app_name and not bundle_id:
@@ -59,12 +60,10 @@ def update_presence():
 
             payload = {
                 "name": app_name or "iOS App",
-                "state": "Playing on iOS",
+                "state": "Playing on " + device_type if device_type else None,
                 "details": get_custom_info(bundle_id) if bundle_id else None,
                 "large_image": large_image,
                 "large_text": app_name,
-                "small_image": "https://avatars.githubusercontent.com/u/64981298?s=96&v=4",
-                "small_text": "iosrpc by @apix0n",
                 "start": start_time
             }
 

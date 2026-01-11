@@ -54,6 +54,7 @@ def get_ios_app_icon(bundle_id):
             results = data.get("results", [])
             if results:
                 icon_url = results[0].get("artworkUrl100")
+                icon_url = icon_url.replace("100x100bb.jpg", "200x200ia.webp")
                 if icon_url:
                     print(f"✅ Found icon for {bundle_id} in {country}: {icon_url}")
                     # Update and save cache
